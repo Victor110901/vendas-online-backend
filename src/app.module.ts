@@ -29,22 +29,9 @@ import { AddressEntity } from './address/entities/address.entity';
       password: process.env.DB_PASSWORD,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
-      entities: [
-        UserEntity,
-        StateEntity,
-        CityEntity,
-        AddressEntity
-      ],
-      migrations: [
-        createTableUser1680713841380,
-        createTableState1680714962155,
-        createTableCity1680714969428,
-        createTableAddress1680714978020,
-        alterTableState1680716950497,
-        insertInState1680716963190,
-        insertInCity1680716969237
-      ],
-      migrationsRun: true
+      entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+      migrations: [`${__dirname}/migration/{.ts,*.js}`],
+      migrationsRun: true,
     }),
     UserModule,
     StateModule,

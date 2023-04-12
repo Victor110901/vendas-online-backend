@@ -1,9 +1,14 @@
+import { AddressEntity } from "src/address/entities/address.entity";
+import { StateEntity } from "src/state/entities/state.entity";
 import {
     Column,
     Entity,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from "typeorm";
 
 @Entity({ name: 'city'})
@@ -21,5 +26,12 @@ export class CityEntity {
     createdAt: Date;
 
     @UpdateDateColumn({name: 'updated_at'})
-    updatedAt: Date
+    updatedAt: Date;
+
+    @OneToMany(() => AddressEntity, (addressEntity) => addressEntity.city)
+    addresses?: AddressEntity[];
+
+    @ManyToOne(() => StateEntity, (state) => state.cities)
+    @JoinColumn({ name: 'state_id', referencedColumnName: 'id'})
+    state?: StateEntity;
 }

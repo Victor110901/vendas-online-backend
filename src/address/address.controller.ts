@@ -1,7 +1,7 @@
 import { Controller, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common';
-import { Roles } from 'src/decorators/roles.decorators';
-import { UserId } from 'src/decorators/user-id.decorator';
-import { UserType } from 'src/user/enums/user-type.enum';
+import { Roles } from '../decorators/roles.decorators';
+import { UserId } from '../decorators/user-id.decorator';
+import { UserType } from '../user/enums/user-type.enum';
 import { AddressService } from './address.service';
 import { CreateAddressDto } from './dtos/createAddress.dto';
 import { AddressEntity } from './entities/address.entity';
